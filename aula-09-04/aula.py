@@ -34,6 +34,66 @@ elif num_color == 4:
     img_gray[(64 < img_gray) & (img_gray < 128)]  = 64
     img_gray[(128 < img_gray) & (img_gray < 192)]  = 128
     img_gray[img_gray > 192]  = 192
+elif num_color == 8:
+    aux = (255 // num_color) + 1
+    aux1 = 32
+    for i in range(num_color):
+        if(i == 0):
+            img_gray[img_gray < aux] = 0
+        elif(i == num_color - 1):
+            img_gray[img_gray > (255 - aux1)] = 255    
+        else:
+            img_gray[(aux < img_gray) & (img_gray < aux + aux1)] = aux
+            aux = aux + aux1  
+
+elif num_color == 16:
+    aux = (255 // num_color) + 1
+    aux1 = 16
+    for i in range(num_color):
+        if(i == 0):
+            img_gray[img_gray < aux] = 0
+        elif(i == num_color - 1):
+            img_gray[img_gray > (255 - aux1)] = 255    
+        else:
+            img_gray[(aux < img_gray) & (img_gray < aux + aux1)] = aux
+            aux = aux + aux1 
+
+elif num_color == 32:
+    aux = (255 // num_color) + 1
+    aux1 = 8
+    for i in range(num_color):
+        if(i == 0):
+            img_gray[img_gray < aux] = 0
+        elif(i == num_color - 1):
+            img_gray[img_gray > (255 - aux1)] = 255    
+        else:
+            img_gray[(aux < img_gray) & (img_gray < aux + aux1)] = aux
+            aux = aux + aux1 
+
+elif num_color == 64:
+    aux = (255 // num_color) + 1
+    aux1 = 4
+    for i in range(num_color):
+        if(i == 0):
+            img_gray[img_gray < aux] = 0
+        elif(i == num_color - 1):
+            img_gray[img_gray > (255 - aux1)] = 255             
+        else:
+            img_gray[(aux < img_gray) & (img_gray < aux + aux1)] = aux
+            aux = aux + aux1 
+
+
+elif num_color == 128:
+    aux = (255 // num_color) + 1
+    aux1 = 2
+    for i in range(num_color):
+        if(i == 0):
+            img_gray[img_gray < aux] = 0
+        elif(i == num_color - 1):
+            img_gray[img_gray > (255 - aux1)] = 255     
+        else:
+            img_gray[(aux < img_gray) & (img_gray < aux + aux1)] = aux
+            aux = aux + aux1 
 else:
     img_gray[img_gray < 32]  = 0
     img_gray[(32 < img_gray) & (img_gray < 64)]  = 32
